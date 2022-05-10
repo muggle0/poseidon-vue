@@ -8,6 +8,10 @@ import "element-ui/lib/theme-chalk/index.css"
 
 import axios from './axios'
 import global from './globalFun'
+import SIdentify from './views/Identify.vue'
+
+
+Vue.component("SIdentify",SIdentify);
 
 Vue.prototype.$axios = axios //
 Vue.config.productionTip = false
