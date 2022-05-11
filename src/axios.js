@@ -1,8 +1,9 @@
 import axios from "axios";
 import router from "./router";
 import Element from "element-ui"
+import QS from 'qs';
 
-axios.defaults.baseURL = "http://localhost:9000"
+axios.defaults.baseURL = "http://localhost:8080/api"
 
 const request = axios.create({
 	timeout: 5000,
@@ -46,4 +47,16 @@ request.interceptors.response.use(
 	}
 )
 
+export function post(url, params) {
+	return new Promise((resolve, reject) => {
+		axios.post(url, QS.stringify(params),{headers: {'content-type': 'application/json'}})
+			.then(res => {
+				resolve(res.data);
+			})
+			.catch(err =>{
+				reject(err.data)
+			})
+	});
+
+}
 export default request
