@@ -35,9 +35,10 @@
                 identifyCode: "",
                 loginForm: {
                     username: 'admin',
-                    password: '111111',
+                    password: '123456',
                     code: '11111',
-                    token: ''
+                    uuid:'',
+                    loginType: 'normal'
                 },
                 rules: {
                     username: [
@@ -78,6 +79,7 @@
                     console.log("/captcha")
                     console.log(res)
                     this.identifyCode= res.data.data.code
+                    this.loginForm.uuid=res.data.data.key
                 })
             }
         },
