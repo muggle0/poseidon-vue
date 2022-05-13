@@ -79,16 +79,12 @@ router.beforeEach((to, from, next) => {
 
 
 	} else if(token && !hasRoute) {
-		axios.get("/sys/menu/nav", {
-			headers: {
-				Authorization: localStorage.getItem("token")
-			}
-		}).then(res => {
+		axios.get("/system/user/UserMenu").then(res => {
 
 			console.log(res.data.data)
 
 			// 拿到menuList
-			store.commit("setMenuList", res.data.data.nav)
+			store.commit("setMenuList", res.data.data.menus)
 
 			// 拿到用户权限
 			store.commit("setPermList", res.data.data.authoritys)

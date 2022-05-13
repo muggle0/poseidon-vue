@@ -15,7 +15,7 @@
                     </div>
                 </el-form-item>
                 <el-form-item>
-                    <el-button type="primary" @click="submitForm('loginForm')">立即创建</el-button>
+                    <el-button type="primary" @click="submitForm('loginForm')">登录</el-button>
                     <el-button @click="resetForm('loginForm')">重置</el-button>
                 </el-form-item>
             </el-form>
@@ -35,7 +35,7 @@
                 identifyCode: "",
                 loginForm: {
                     username: 'admin',
-                    password: '123456',
+                    password: 'admin',
                     code: '11111',
                     uuid:'',
                     loginType: 'normal'
@@ -59,8 +59,8 @@
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
                         this.$axios.post('/sign_in' ,this.loginForm,{headers: {'content-type': 'application/json'}}).then(res => {
-                            console.log(res)
-                            const jwt = res.headers['token']
+                            console.log(res.data.data)
+                            const jwt = this.loginForm.uuid=res.data.data
                             this.$store.commit('SET_TOKEN', jwt)
                             this.$router.push("/index")
                         })

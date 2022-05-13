@@ -7,16 +7,10 @@
 		</el-aside>
 		<el-container>
 			<el-header>
-				<strong>VueAdmin后台管理系统</strong>
-
+				<strong>后台管理系统</strong>
 				<div class="header-avatar">
-
-					<el-avatar size="medium" :src="userInfo.avatar"></el-avatar>
-
 					<el-dropdown>
-						<span class="el-dropdown-link">
-						{{userInfo.username}}<i class="el-icon-arrow-down el-icon--right"></i>
-						</span>
+						<el-avatar size="medium" :src="userInfo.avatar"></el-avatar>
 						<el-dropdown-menu slot="dropdown">
 							<el-dropdown-item>
 								<router-link :to="{name: 'UserCenter'}">个人中心</router-link>
@@ -24,9 +18,6 @@
 							<el-dropdown-item @click.native="logout">退出</el-dropdown-item>
 						</el-dropdown-menu>
 					</el-dropdown>
-
-					<el-link href="https://markerhub.com" target="_blank">网站</el-link>
-					<el-link href="https://space.bilibili.com/13491144" target="_blank">B站</el-link>
 				</div>
 
 			</el-header>
@@ -63,7 +54,7 @@
 		},
 		methods: {
 			getUserInfo() {
-				this.$axios.get("/sys/userInfo").then(res => {
+				this.$axios.get("/user/userInfo").then(res => {
 					this.userInfo = res.data.data
 				})
 			},
@@ -90,7 +81,7 @@
 
 	.header-avatar {
 		float: right;
-		width: 210px;
+		width: 100px;
 		display: flex;
 		justify-content: space-around;
 		align-items: center;

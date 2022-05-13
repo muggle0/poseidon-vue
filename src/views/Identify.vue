@@ -17,7 +17,7 @@
             },
             fontSizeMax: {
                 type: Number,
-                default: 40
+                default: 35
             },
             backgroundColorMin: {
                 type: Number,
