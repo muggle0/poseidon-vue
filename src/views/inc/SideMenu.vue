@@ -1,19 +1,20 @@
 <template>
 	<el-menu
 			:default-active="this.$store.state.menus.editableTabsValue"
-			class="el-menu-vertical-demo"
+			class="el-menu-vertical"
 			background-color="#545c64"
 			text-color="#fff"
 			active-text-color="#ffd04b">
 
 		<router-link to="/index">
-			<el-menu-item index="Index"  @click="selectMenu({name: 'Index', title: '首页'})">
+			<el-menu-item index="Index"  @click="selectMenu({name: 'Index', title: '菜单'})">
 				<template slot="title">
 					<i class="el-icon-s-home"></i>
-					<span slot="title">首页</span>
+					<span slot="title">菜单设置</span>
 				</template>
 			</el-menu-item>
 		</router-link>
+
 
 		<el-submenu :index="menu.name" v-for="menu in menuList">
 			<template slot="title">
@@ -59,7 +60,7 @@
 </script>
 
 <style scoped>
-	.el-menu-vertical-demo {
+	.el-menu-vertical {
 		height: 100%;
 	}
 </style>

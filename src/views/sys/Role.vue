@@ -208,7 +208,7 @@
 		created() {
 			this.getRoleList()
 
-			this.$axios.get('/sys/menu/list').then(res => {
+			this.$axios.get('/system/menu/list').then(res => {
 				this.permTreeData = res.data.data
 			})
 		},
@@ -251,7 +251,7 @@
 			},
 
 			getRoleList() {
-				this.$axios.get("/sys/role/list", {
+				this.$axios.get("/system/role/list", {
 					params: {
 						name: this.searchForm.name,
 						current: this.current,

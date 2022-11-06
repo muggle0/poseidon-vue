@@ -23,7 +23,7 @@
 					width="180">
 			</el-table-column>
 			<el-table-column
-					prop="perms"
+					prop="permission"
 					label="权限编码"
 					sortable
 					width="180">
@@ -112,8 +112,8 @@
 					<el-input v-model="editForm.name" autocomplete="off"></el-input>
 				</el-form-item>
 
-				<el-form-item label="权限编码" prop="perms" label-width="100px">
-					<el-input v-model="editForm.perms" autocomplete="off"></el-input>
+				<el-form-item label="权限编码" prop="permission" label-width="100px">
+					<el-input v-model="editForm.permission" autocomplete="off"></el-input>
 				</el-form-item>
 
 				<el-form-item label="图标" prop="icon" label-width="100px">
@@ -148,7 +148,7 @@
 
 
 				<el-form-item>
-					<el-button type="primary" @click="submitForm('editForm')">立即创建</el-button>
+					<el-button type="primary" @click="submitForm('editForm')">保存</el-button>
 					<el-button @click="resetForm('editForm')">重置</el-button>
 				</el-form-item>
 			</el-form>
@@ -162,7 +162,7 @@
 
 <script>
 	export default {
-		name: "Menu",
+		name: "Index",
 		data() {
 			return {
 				dialogVisible: false,
@@ -171,12 +171,12 @@
 				},
 				editFormRules: {
 					parentId: [
-						{required: true, message: '请选择上级菜单', trigger: 'blur'}
+						{required: false, message: '请选择上级菜单', trigger: 'blur'}
 					],
 					name: [
 						{required: true, message: '请输入名称', trigger: 'blur'}
 					],
-					perms: [
+					permission: [
 						{required: true, message: '请输入权限编码', trigger: 'blur'}
 					],
 					type: [
@@ -197,14 +197,14 @@
 		},
 		methods: {
 			getMenuTree() {
-				this.$axios.get("/sys/menu/list").then(res => {
+				this.$axios.get("/system/menu/list").then(res => {
 					this.tableData = res.data.data
 				})
 			},
 			submitForm(formName) {
 				this.$refs[formName].validate((valid) => {
 					if (valid) {
-						this.$axios.post('/sys/menu/' + (this.editForm.id?'update' : 'save'), this.editForm)
+						this.$axios.post('/system/menu/' + (this.editForm.id?'update' : 'save'), this.editForm)
 								.then(res => {
 
 									this.$message({
@@ -225,7 +225,7 @@
 				});
 			},
 			editHandle(id) {
-				this.$axios.get('/sys/menu/info/' + id).then(res => {
+				this.$axios.get('/system/menu/info/' + id).then(res => {
 					this.editForm = res.data.data
 
 					this.dialogVisible = true
@@ -240,7 +240,7 @@
 				this.resetForm('editForm')
 			},
 			delHandle(id) {
-				this.$axios.post("/sys/menu/delete/" + id).then(res => {
+				this.$axios.post("/system/menu/delete/" + id).then(res => {
 					this.$message({
 						showClose: true,
 						message: '恭喜你，操作成功',

@@ -231,7 +231,7 @@
 		created() {
 			this.getUserList()
 
-			this.$axios.get("/sys/role/list").then(res => {
+			this.$axios.get("/system/role/list").then(res => {
 				this.roleTreeData = res.data.data.records
 			})
 		},
@@ -274,7 +274,7 @@
 			},
 
 			getUserList() {
-				this.$axios.get("/sys/user/list", {
+				this.$axios.get("/system/user/list", {
 					params: {
 						username: this.searchForm.username,
 						current: this.current,

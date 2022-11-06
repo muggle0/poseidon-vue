@@ -13,7 +13,7 @@ export default {
 
 		editableTabsValue: 'Index',
 		editableTabs: [{
-			title: '首页',
+			title: '菜单',
 			name: 'Index',
 		}]
 	},
@@ -21,8 +21,8 @@ export default {
 		setMenuList(state, menus) {
 			state.menuList = menus
 		},
-		setPermList(state, perms) {
-			state.permList = perms
+		setPermList(state, permission) {
+			state.permList = permission
 		},
 		changeRouteStatus(state, hasRoutes) {
 			state.hasRoutes = hasRoutes
@@ -49,7 +49,7 @@ export default {
 			state.hasRoutes = false
 			state.editableTabsValue = 'Index'
 			state.editableTabs = [{
-				title: '首页',
+				title: '菜单',
 				name: 'Index',
 			}]
 		}

@@ -5,7 +5,7 @@
 			<SideMenu></SideMenu>
 
 		</el-aside>
-		<el-container>
+		<el-container >
 			<el-header>
 				<strong>后台管理系统</strong>
 				<div class="header-avatar">
@@ -92,7 +92,7 @@
 	}
 
 	.el-header {
-		background-color: #17B3A3;
+		background-color: #D3DCE6;
 		color: #333;
 		text-align: center;
 		line-height: 60px;
